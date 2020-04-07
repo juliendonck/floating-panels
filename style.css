@@ -1,0 +1,71 @@
+.sidebar {
+  position: fixed;
+  background-color: lightseagreen;
+  height: 100vh;
+  width: 68px;
+  text-align: center;
+}
+
+.page {
+  margin-left: 68px
+}
+
+.header {
+  background-color: lightyellow;
+  text-align: center;
+  height: 60px;
+  max-width: 100vw;
+  position: sticky;
+  top: 0;
+}
+
+
+.content-header {
+  background-color: lightskyblue;
+  height: 160px;
+}
+
+.content-menu {
+  background-color: lightslategrey;
+  height: 64px;
+  position: sticky;
+  top: 60px;
+}
+
+.content-menu>ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.content-menu>ul>li {
+  margin-right: 64px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.content>.commits {
+  max-width: 1140px;
+}
+
+.code-browser {
+  display: flex;
+  flex-direction: row;
+}
+
+.code-sidebar {
+  background-color: lightgrey;
+  width: 286px;
+  position: sticky;
+  top: 124px;
+  align-self: flex-start;
+  height: calc(100vh - 124px);
+}
+
+.code {
+  width: calc(100vw - 286px - 68px);
+  font-family: monospace;
+  line-height: 150%;
+}

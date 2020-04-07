@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Floating panels</title>
+</head>
+
+<body>
+  <div class="sidebar">sidebar</div>
+  <div class="page">
+    <div class="header">project header</div>
+    <div class="main">
+      <div class="content-header">Project metadata</div>
+      <div class="content-menu">
+        <ul>
+          <li><a href="/">Code</a></li>
+          <li><a href="/commits.html">Commits</a></li>
+          <li><a href="">Branches</a></li>
+          <li><a href="">Contributors</a></li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="code-browser">
+          <div class="code-sidebar">sidebar</div>
+          <div class="code">
+            <pre>
+    import {
+    onDestroy
+    } from "svelte";
+
+    import {
+    notificationStore
+    } from "../../store/notification.js";
+    import {
+    NOTIFICATION_TIMEOUT
+    } from "../../config.js";
+
+    import Notification from "./Notification.svelte";
+
+    import {
+    blur
+    } from "svelte/transition";
+
+    export let style = null;
+    let messages = [];
+
+    const unsubscribe = notificationStore.subscribe(message => {
+    if (!message) {
+    return;
+    }
+
+    const id = Math.random();
+    messages = [
+    ...messages,
+    {
+    id: id,
+    message: message.text,
+    level: message.level
+    }
+    ];
+    notificationStore.set();
+    setTimeout(() => {
+    remove(id);
+    }, NOTIFICATION_TIMEOUT);
+    });
+
+    const remove = id => {
+    messages = messages.filter(m => m.id != id);
+    };
+
+    onDestroy(() => {
+    unsubscribe();
+    });
+    import {
+      onDestroy
+      } from "svelte";
+
+      import {
+      notificationStore
+      } from "../../store/notification.js";
+      import {
+      NOTIFICATION_TIMEOUT
+      } from "../../config.js";
+
+      import Notification from "./Notification.svelte";
+
+      import {
+      blur
+      } from "svelte/transition";
+
+      export let style = null;
+      let messages = [];
+
+      const unsubscribe = notificationStore.subscribe(message => {
+      if (!message) {
+      return;
+      }
+
+      const id = Math.random();
+      messages = [
+      ...messages,
+      {
+      id: id,
+      message: message.text,
+      level: message.level
+      }
+      ];
+      notificationStore.set();
+      setTimeout(() => {
+      remove(id);
+      }, NOTIFICATION_TIMEOUT);
+      });
+
+      const remove = id => {
+      messages = messages.filter(m => m.id != id);
+      };
+
+      onDestroy(() => {
+      unsubscribe();
+      });
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
